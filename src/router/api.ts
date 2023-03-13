@@ -3,6 +3,7 @@ import * as Poet from '../controllers/PoetController';
 import * as Poem from '../controllers/PoemController';
 import * as ChosenVerse from '../controllers/ChosenVerseController';
 import * as Prose from '../controllers/ProseController';
+import * as Order from '../controllers/OrderController';
 
 const api = Router();
 
@@ -33,4 +34,9 @@ api.post('/prose', Prose.post);
 api.put('/prose/:id', Prose.update);
 api.delete('/prose/:id', Prose.destroy);
 
+api.get('/orders', Order.index);
+api.get('/order/:name/:phone', Order.indexOne);
+api.post('/order/store', Order.post);
+api.put('/order/:id', Order.update);
+api.delete('/order/:id', Order.destroy);
 export default api;
