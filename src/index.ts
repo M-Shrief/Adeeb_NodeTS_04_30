@@ -1,12 +1,17 @@
 import express, { Request, Response } from 'express';
 import cors from 'cors';
 import bodyParser from 'body-parser';
-import mongoose, { ConnectOptions } from 'mongoose';
+import compression from 'compression';
+import mongoose from 'mongoose';
 import api from './router/api';
+import helmet from 'helmet';
 import dotenv from 'dotenv';
 dotenv.config();
 
 const app = express();
+app.use(compression());
+
+app.use(helmet());
 
 app.use(
   cors({
