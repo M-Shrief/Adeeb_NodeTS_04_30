@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { Poet } from '../models/Poet';
+import Poet from '../models/Poet';
 
 export const index = (req: Request, res: Response) => {
   Poet.find({}, { name: 1, time_period: 1 })

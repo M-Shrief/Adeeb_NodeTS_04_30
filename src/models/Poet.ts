@@ -23,4 +23,5 @@ const poetSchema = new Schema(
   { timestamps: true }
 );
 
-export const Poet = mongoose.model('Poet', poetSchema);
+const Poet = mongoose.model('Poet', poetSchema);
+export default Poet;
