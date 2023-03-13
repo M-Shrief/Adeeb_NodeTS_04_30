@@ -2,8 +2,10 @@ import express, { Request, Response } from 'express';
 import cors from 'cors';
 import bodyParser from 'body-parser';
 import mongoose, { ConnectOptions } from 'mongoose';
+import api from './router/api';
 import dotenv from 'dotenv';
 dotenv.config();
+
 const app = express();
 
 app.use(
@@ -25,10 +27,12 @@ mongoose
   .then(() => console.log('connected'))
   .catch((err) => console.log(err));
 
+app.listen('3000', (): void => {
+  console.log('Server Running!');
+});
+
 app.get('/', (req: Request, res: Response) => {
   res.json({ message: 'Please Like the Video!' });
 });
 
-app.listen('3000', (): void => {
-  console.log('Server Running!');
-});
+app.use('/api', api);
