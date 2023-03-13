@@ -1,4 +1,5 @@
 import mongoose from 'mongoose';
+import type Verse from './__Verse';
 const Schema = mongoose.Schema;
 
 const chosenVerseSchema = new Schema(
@@ -17,12 +18,7 @@ const chosenVerseSchema = new Schema(
       type: String,
       required: true,
     },
-    verse: [
-      {
-        first: String,
-        sec: String,
-      },
-    ],
+    verse: [] as Verse[],
     reviewed: {
       type: Boolean,
       default: false,

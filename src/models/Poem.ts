@@ -1,4 +1,5 @@
 import mongoose from 'mongoose';
+import type Verse from './__Verse';
 const Schema = mongoose.Schema;
 
 const poemSchema = new Schema(
@@ -8,12 +9,7 @@ const poemSchema = new Schema(
       required: true,
     },
     poet: { type: Schema.Types.ObjectId, ref: 'Poet', required: true },
-    verses: [
-      {
-        first: String,
-        sec: String,
-      },
-    ],
+    verses: [] as Verse[],
     reviewed: {
       type: Boolean,
       default: false,
