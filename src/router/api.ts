@@ -7,6 +7,7 @@ import * as Prose from '../controllers/ProseController';
 const api = Router();
 
 api.get('/poets', Poet.index);
+api.get('/poet/:id', Poet.indexOneWithLiterature);
 api.post('/poet', Poet.post);
 api.put('/poet/:id', Poet.update);
 api.delete('/poet/:id', Poet.destroy);
