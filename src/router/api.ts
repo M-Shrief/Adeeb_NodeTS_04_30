@@ -41,7 +41,7 @@ api.post('/partner/login', Partner.login);
 // api.post('/partner/logout', Partner.logout);
 
 api.get('/order/:name/:phone', Order.getOrder);
-api.get('/order/:id', Order.getPartnerOrder);
+api.get('/order/:partner', Order.getPartnerOrder);
 api.post('/order/store', Order.post);
 api.put('/order/:id', Order.update);
 api.delete('/order/:id', Order.destroy);
