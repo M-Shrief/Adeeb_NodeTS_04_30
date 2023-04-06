@@ -34,8 +34,8 @@ api.post('/prose', Prose.post);
 api.put('/prose/:id', Prose.update);
 api.delete('/prose/:id', Prose.destroy);
 
-api.get('/orders', Order.index);
-api.get('/order/:name/:phone', Order.indexOne);
+api.get('/order/:name/:phone', Order.getOrder);
+api.get('/order/:id', Order.getPartnerOrder);
 api.post('/order/store', Order.post);
 api.put('/order/:id', Order.update);
 api.delete('/order/:id', Order.destroy);

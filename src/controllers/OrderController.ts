@@ -2,20 +2,21 @@ import { Request, Response } from 'express';
 import Order from '../models/Order';
 import DOMPurify from 'isomorphic-dompurify';
 
-export const index = (req: Request, res: Response) => {
-  Order.find()
-    .then((result) => {
-      res.send(result);
-    })
-    .catch((err) => console.log(err));
+export const getOrder = (req: Request, res: Response) => {
+  Order.find({
+    name: req.params.name,
+    phone: req.params.phone,
+  }).then((order) => {
+    res.send(order);
+  });
 };
 
-export const indexOne = (req: Request, res: Response) => {
-  Order.find({ name: req.params.name, phone: req.params.phone }).then(
-    (order) => {
-      res.send(order);
-    }
-  );
+export const getPartnerOrder = (req: Request, res: Response) => {
+  Order.find({
+    partner: req.params.partner,
+  }).then((order) => {
+    res.send(order);
+  });
 };
 
 export const post = async (req: Request, res: Response) => {
