@@ -17,7 +17,7 @@ export const indexOneWithLiterature = async (req: Request, res: Response) => {
     // insteading of awaiting every constant alone, we do it concurrently. (still learning it and experiementing it so.)
     const [poet, authoredPoems, authoredProses, authoredChosenVerses] =
       await Promise.all([
-        Poet.find({ _id: req.params.id }, { name: 1, bio: 1, time_period: 1 }),
+        Poet.findById(req.params.id, { name: 1, bio: 1, time_period: 1 }),
         Poem.find({ poet: req.params.id }, { intro: 1, reviewed: 1 }),
         Prose.find({ poet: req.params.id }, { tags: 1, qoute: 1 }),
         ChosenVerse.find(
@@ -26,7 +26,7 @@ export const indexOneWithLiterature = async (req: Request, res: Response) => {
         ),
       ]);
     res.send({
-      details: poet[0],
+      details: poet,
       authoredPoems,
       authoredChosenVerses,
       authoredProses,
