@@ -3,6 +3,11 @@ const Schema = mongoose.Schema;
 
 const orderSchema = new Schema(
   {
+    partner: {
+      type: Schema.Types.ObjectId,
+      ref: 'Partner',
+      required: false,
+    },
     name: {
       type: String,
       required: true,
