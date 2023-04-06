@@ -23,17 +23,28 @@ export const post = async (req: Request, res: Response) => {
   let name = DOMPurify.sanitize(req.body.name);
   let phone = DOMPurify.sanitize(req.body.phone);
   let address = DOMPurify.sanitize(req.body.address);
-  let reviewed = req.body.reviewed;
-  let completed = req.body.completed;
-  let products = req.body.products;
-  const order = new Order({
-    name,
-    phone,
-    address,
-    reviewed,
-    completed,
-    products,
-  });
+  let partner = req.body.partner;
+  let order;
+  if (partner) {
+    order = new Order({
+      partner,
+      name,
+      phone,
+      address,
+      reviewed: req.body.reviewed,
+      completed: req.body.completed,
+      products: req.body.products,
+    });
+  } else {
+    order = new Order({
+      name,
+      phone,
+      address,
+      reviewed: req.body.reviewed,
+      completed: req.body.completed,
+      products: req.body.products,
+    });
+  }
 
   try {
     const newOrder = await order.save();
