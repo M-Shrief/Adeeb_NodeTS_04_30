@@ -31,7 +31,7 @@ const decodeToken = (token: string) => {
 
 // Middleware
 // const isAuth = (req, res, next) => {
-//   const authorization = req.headers['authorization'];
+//   const authorization = req.headers['Authorization'];
 //   if (!authorization) throw new Error('not authorized');
 //   // console.log(authorization);
 //   try {
