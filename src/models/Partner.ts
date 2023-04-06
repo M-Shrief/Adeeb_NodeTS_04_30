@@ -13,7 +13,7 @@ const partnerSchema = new Schema(
       required: true,
     },
     addresses: {
-      type: String || Array,
+      type: String,
       required: true,
     },
     password: {
