@@ -1,6 +1,7 @@
 import express, { Request, Response } from 'express';
 import cors from 'cors';
 import bodyParser from 'body-parser';
+import cookieParser from 'cookie-parser';
 import compression from 'compression';
 import mongoose from 'mongoose';
 import api from './router/api';
@@ -10,18 +11,19 @@ dotenv.config();
 
 const app = express();
 app.use(compression());
-
 app.use(helmet());
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+app.use(cookieParser());
 
 app.use(
   cors({
     origin: 'http://localhost:3000',
-    methods: 'GET',
+    methods: ['GET', 'POST'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
+    credentials: true,
   })
 );
-
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
 
 // const MONGO_DB = process.env.MONGO_DB as string;
 mongoose
