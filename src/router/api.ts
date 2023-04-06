@@ -4,6 +4,7 @@ import * as Poem from '../controllers/PoemController';
 import * as ChosenVerse from '../controllers/ChosenVerseController';
 import * as Prose from '../controllers/ProseController';
 import * as Order from '../controllers/OrderController';
+import * as Partner from '../controllers/PartnerController';
 
 const api = Router();
 
@@ -33,6 +34,11 @@ api.get('/prose/:id', Prose.indexOneWithPoet);
 api.post('/prose', Prose.post);
 api.put('/prose/:id', Prose.update);
 api.delete('/prose/:id', Prose.destroy);
+
+api.get('/partner/:id', Partner.partnerInfo);
+api.post('/partner/signup', Partner.signup);
+api.post('/partner/login', Partner.login);
+// api.post('/partner/logout', Partner.logout);
 
 api.get('/order/:name/:phone', Order.getOrder);
 api.get('/order/:id', Order.getPartnerOrder);
