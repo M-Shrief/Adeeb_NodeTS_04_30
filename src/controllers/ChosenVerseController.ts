@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
 import ChosenVerse from '../models/ChosenVerse';
-import durstenfeldShuffle from '../durstenfeldShuffle';
+import durstenfeldShuffle from '../utils/durstenfeldShuffle';
 
 export const indexWithPoet = (req: Request, res: Response) => {
   ChosenVerse.find({}, { reviewed: 1, tags: 1, verse: 1, poet: 1, poem: 1 })

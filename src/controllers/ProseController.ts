@@ -1,5 +1,5 @@
 import Prose from '../models/Prose';
-import durstenfeldShuffle from '../durstenfeldShuffle';
+import durstenfeldShuffle from '../utils/durstenfeldShuffle';
 import { Request, Response } from 'express';
 
 export const indexWithPoet = (req: Request, res: Response) => {
