@@ -3,19 +3,19 @@ import bcrypt from 'bcryptjs';
 // Check PASETO, as an improved alternative for JWT: https://paseto.io/
 import jwt from 'jsonwebtoken';
 
-function hashPassword(password: string) {
+export function hashPassword(password: string) {
   const salt = bcrypt.genSaltSync(); // default 10
   return bcrypt.hashSync(password, salt);
 }
 
-function comparePassword(raw: string, hash: string) {
+export function comparePassword(raw: string, hash: string) {
   return bcrypt.compareSync(raw, hash);
 }
 
 const privateKEY = fs.readFileSync('./jwtRS256.key', 'utf8');
 const publicKEY = fs.readFileSync('./jwtRS256.key.pub', 'utf8');
 
-const createToken = (partner: any) => {
+export const createToken = (partner: any) => {
   const { fullname, _id } = partner;
   const accessToken = jwt.sign({ fullname, _id }, privateKEY, {
     expiresIn: '2h',
@@ -25,7 +25,7 @@ const createToken = (partner: any) => {
   return accessToken;
 };
 
-const decodeToken = (token: string) => {
+export const decodeToken = (token: string) => {
   return jwt.decode(token);
 };
 
@@ -44,10 +44,3 @@ const decodeToken = (token: string) => {
 //   }
 //   next();
 // };
-
-module.exports = {
-  hashPassword,
-  comparePassword,
-  createToken,
-  decodeToken,
-};
